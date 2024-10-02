@@ -1,4 +1,4 @@
-- 👋 Hi, I’m @Aditya0292
+- 👋 Hi, I’m Aditya havaldar 
 - 👀 I’m interested in robotics and editing 
 - 🌱 I’m currently Learning branch of AI&DS
 
