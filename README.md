@@ -154,17 +154,6 @@ class AdityaHawaldar:
 
 ---
 
-## 🏆 Achievements
-
-| 🥇 | Achievement | Event |
-|---|---|---|
-| 🏅 | **Finalist** | Dimension X Hackathon — Google Developers @ DYPCET |
-| 🎯 | **Top 8 of 125+ (Top 6.4%)** | Regional Technical Competition — SKN Sinhgad College |
-| 🥉 | **Rank #3** | Technotza 2K26 — DYPCET, Kolhapur |
-| 🏆 | **Token of Appreciation** | Hackathon 2025 — AI Feedback System |
-| 📜 | **Certified** | Generative AI — YBI Foundation (LLMs + Prompt Engineering) |
-
----
 
 ## 📈 GitHub Stats
 
