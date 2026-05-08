@@ -1,7 +1,7 @@
 <div align="center">
 
 <div align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Share+Tech+Mono&size=40&duration=3000&pause=1000&color=2E6DB4&center=true&vCenter=true&width=600&height=80&lines=Aditya+Hawaldar;AI+Engineer;FinTech+Builder" alt="Aditya Hawaldar" />
+  <img src="https://readme-typing-svg.demolab.com?font=Share+Tech+Mono&size=40&duration=3000&pause=1000&color=2E6DB4&center=true&vCenter=true&width=600&height=80&lines=Aditya+Hawaldar;AI+Engineer;FinTech+Enthusiast" alt="Aditya Hawaldar" />
 </div>
 
 <p>
