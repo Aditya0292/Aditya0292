@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=1A3C6E&height=200&section=header&text=Aditya%20Hawaldar&fontSize=50&fontColor=ffffff&fontAlignY=38&desc=AI%20Engineer%20%7C%20FinTech%20Builder%20%7C%20B.Tech%20AI%20%26%20DS&descAlignY=58&descSize=18&descColor=B5D4F4"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&amp;color=1A3C6E&amp;height=200&amp;section=header&amp;text=Aditya%20Hawaldar&amp;fontSize=50&amp;fontColor=ffffff&amp;fontAlignY=38&amp;desc=AI%20Engineer%20%7C%20FinTech%20Builder%20%7C%20B.Tech%20AI%20%26%20DS&amp;descAlignY=58&amp;descSize=18&amp;descColor=B5D4F4"/>
 
 <p>
   <a href="https://www.linkedin.com/in/aditya-havaldar-205951288/">
