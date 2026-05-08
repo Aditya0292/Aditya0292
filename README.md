@@ -28,7 +28,7 @@ class AdityaHawaldar:
         self.name        = "Aditya Amit Hawaldar"
         self.role        = "AI & Data Science Engineer"
         self.university  = "Government College of Engineering, Kolhapur"
-        self.year        = "2nd Year B.Tech (2023–2027)"
+        self.year        = "3rd Year B.Tech (2023–2027)"
         self.location    = "Kolhapur, India"
 
         self.focus       = ["Algorithmic Trading", "LLM Applications", "FinTech AI"]
