@@ -1,8 +1,157 @@
 <div align="center">
 
-<div align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Share+Tech+Mono&size=40&duration=3000&pause=1000&color=2E6DB4&center=true&vCenter=true&width=600&height=80&lines=Aditya+Hawaldar;AI+Engineer;FinTech+Builder" alt="Aditya Hawaldar" />
-</div>
+<h2 class="sr-only">Animated pixel art display of the name Aditya Hawaldar</h2>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+#c{display:block;background:#0D1117;width:100%;border-radius:12px}
+.sub{text-align:center;font-size:13px;color:#378ADD;letter-spacing:0.15em;padding:10px 0 14px;font-family:monospace}
+</style>
+<canvas id="c" height="180"></canvas>
+<div class="sub">AI ENGINEER &nbsp;·&nbsp; FINTECH BUILDER &nbsp;·&nbsp; GCE KOLHAPUR</div>
+<script>
+const C=document.getElementById('c');
+const ctx=C.getContext('2d');
+const W=C.offsetWidth||680;
+C.width=W;
+
+const FONT=[
+  {ch:'A',w:7,rows:["_XXX___","X___X__","X___X__","XXXXX__","X___X__","X___X__","X___X__"]},
+  {ch:'D',w:7,rows:["XXXX___","X___X__","X____X_","X____X_","X____X_","X___X__","XXXX___"]},
+  {ch:'I',w:5,rows:["XXXXX_","__X___","__X___","__X___","__X___","__X___","XXXXX_"]},
+  {ch:'T',w:7,rows:["XXXXX__","__X____","__X____","__X____","__X____","__X____","__X____"]},
+  {ch:'Y',w:7,rows:["X___X__","X___X__","_X_X___","__X____","__X____","__X____","__X____"]},
+  {ch:'A',w:7,rows:["_XXX___","X___X__","X___X__","XXXXX__","X___X__","X___X__","X___X__"]},
+  {ch:' ',w:4,rows:["____","____","____","____","____","____","____"]},
+  {ch:'H',w:7,rows:["X___X__","X___X__","X___X__","XXXXX__","X___X__","X___X__","X___X__"]},
+  {ch:'A',w:7,rows:["_XXX___","X___X__","X___X__","XXXXX__","X___X__","X___X__","X___X__"]},
+  {ch:'W',w:9,rows:["X_____X__","X_____X__","X__X__X__","X_X_X_X__","X_X_X_X__","_X___X___","_X___X___"]},
+  {ch:'A',w:7,rows:["_XXX___","X___X__","X___X__","XXXXX__","X___X__","X___X__","X___X__"]},
+  {ch:'L',w:6,rows:["X_____","X_____","X_____","X_____","X_____","X_____","XXXXX_"]},
+  {ch:'D',w:7,rows:["XXXX___","X___X__","X____X_","X____X_","X____X_","X___X__","XXXX___"]},
+  {ch:'A',w:7,rows:["_XXX___","X___X__","X___X__","XXXXX__","X___X__","X___X__","X___X__"]},
+  {ch:'R',w:7,rows:["XXXX___","X___X__","X___X__","XXXX___","X_X____","X__X___","X___X__"]},
+];
+
+const PS=6;
+const GAP=2;
+const ROWS=7;
+
+let cols=[];
+let xOff=0;
+FONT.forEach(f=>{
+  const w=f.rows[0].length;
+  for(let c=0;c<w;c++){
+    let col=[];
+    for(let r=0;r<ROWS;r++) col.push(f.rows[r][c]==='X'?1:0);
+    cols.push({pixels:col,x:xOff});
+    xOff+=(PS+GAP);
+  }
+  xOff+=GAP;
+});
+
+const totalW=xOff;
+const totalH=ROWS*(PS+GAP);
+const startX=(W-totalW)/2;
+const startY=(180-totalH)/2;
+
+const BLUE='#2E6DB4';
+const BRIGHT='#85B7EB';
+const DIM='#0C447C';
+const SPARK='#B5D4F4';
+
+let particles=[];
+let t=0;
+let phase='build';
+let buildIdx=0;
+let buildTimer=0;
+let revealed=new Array(cols.length).fill(false);
+
+function spawnSpark(x,y){
+  for(let i=0;i<3;i++){
+    particles.push({
+      x:x+PS/2,y:y+PS/2,
+      vx:(Math.random()-0.5)*3,
+      vy:(Math.random()-0.5)*3,
+      life:1,decay:0.05+Math.random()*0.05,
+      size:Math.random()*2+1
+    });
+  }
+}
+
+function draw(){
+  ctx.clearRect(0,0,W,180);
+  ctx.fillStyle='#0D1117';
+  ctx.fillRect(0,0,W,180);
+
+  t+=0.03;
+
+  if(phase==='build'){
+    buildTimer++;
+    if(buildTimer>1 && buildIdx<cols.length){
+      revealed[buildIdx]=true;
+      const col=cols[buildIdx];
+      for(let r=0;r<ROWS;r++){
+        if(col.pixels[r]){
+          const px=startX+col.x;
+          const py=startY+r*(PS+GAP);
+          spawnSpark(px,py);
+        }
+      }
+      buildIdx++;
+      buildTimer=0;
+      if(buildIdx>=cols.length) phase='idle';
+    }
+  }
+
+  cols.forEach((col,ci)=>{
+    if(!revealed[ci]) return;
+    for(let r=0;r<ROWS;r++){
+      const px=startX+col.x;
+      const py=startY+r*(PS+GAP);
+      if(col.pixels[r]){
+        const wave=Math.sin(t+ci*0.18+r*0.25);
+        const brightness=0.7+0.3*wave;
+        if(brightness>0.85){
+          ctx.fillStyle=BRIGHT;
+        } else if(brightness>0.7){
+          ctx.fillStyle=BLUE;
+        } else {
+          ctx.fillStyle=DIM;
+        }
+        ctx.fillRect(px,py,PS,PS);
+      } else {
+        ctx.fillStyle='#0D1117';
+        ctx.fillRect(px,py,PS,PS);
+      }
+    }
+  });
+
+  particles=particles.filter(p=>p.life>0);
+  particles.forEach(p=>{
+    ctx.globalAlpha=p.life;
+    ctx.fillStyle=SPARK;
+    ctx.fillRect(p.x,p.y,p.size,p.size);
+    p.x+=p.vx;
+    p.y+=p.vy;
+    p.life-=p.decay;
+    p.vx*=0.92;
+    p.vy*=0.92;
+  });
+  ctx.globalAlpha=1;
+
+  if(phase==='idle'){
+    const scanX=((t*30)%(totalW+80))-40;
+    const gx=startX+scanX;
+    ctx.fillStyle='rgba(53,138,221,0.08)';
+    ctx.fillRect(gx,startY-4,12,totalH+8);
+  }
+
+  requestAnimationFrame(draw);
+}
+
+draw();
+</script>
+
 <p>
   <a href="https://www.linkedin.com/in/aditya-havaldar-205951288/">
     <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/>
